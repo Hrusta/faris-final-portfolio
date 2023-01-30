@@ -2,8 +2,13 @@ import React from "react";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const About = () => {
+  const openInNewTab = (url) => {
+    window.open(url, "_blank", "noreferrer");
+  };
+
   const skills = [
     {
       name: "React",
@@ -33,14 +38,18 @@ export const About = () => {
 
   const projects = [
     {
-      title: "Ask.it",
+      title: "Netflix Clone",
       description:
-        "Web application for asking questions.A React.js project built using TypeScript. Used Redux for data storage",
+        "Front-end Netflix clone with Firebase back-end. Used TMDB API for data and Firebase Authentication for login. Stored user specific data with React and Firestore. Styled with Tailwind CSS",
+      code: "https://github.com/Hrusta/netflix-clone",
+      live: "https://hrusta.github.io/netflix-clone/",
     },
     {
-      title: "Vaktija",
+      title: "Ask.it",
       description:
-        "A web application that uses an API that fetches the prayer time and displays it to the user",
+        "Web application for asking questions. A React.js project built using TypeScript. Used Redux for data storage.",
+      code: "https://github.com/Hrusta/ask.itv3",
+      live: "https://hrusta.github.io/ask.itv3/",
     },
   ];
 
@@ -59,7 +68,7 @@ export const About = () => {
         </Row>
         <Row className="sec_sp">
           <Col lg="5">
-            <h3 className="color_sec py-4">a bit about myself</h3>
+            <h3 className="color_sec py-4">A bit about myself</h3>
           </Col>
           <Col lg="7" className="d-flex align-items-center">
             <div>
@@ -76,7 +85,7 @@ export const About = () => {
 
         <Row className="sec_sp">
           <Col lg="5">
-            <h3 className="color_sec py-4">skills</h3>
+            <h3 className="color_sec py-4">Skills</h3>
           </Col>
           <Col lg="7">
             {skills.map((data, i) => {
@@ -100,7 +109,7 @@ export const About = () => {
         </Row>
         <Row className="sec_sp">
           <Col lang="5">
-            <h3 className="color_sec py-4">projects</h3>
+            <h3 className="color_sec py-4">Projects</h3>
           </Col>
           <Col lg="7">
             {projects.map((data, i) => {
@@ -108,6 +117,30 @@ export const About = () => {
                 <div className="service_ py-4" key={i}>
                   <h5 className="service__title">{data.title}</h5>
                   <p className="service_desc">{data.description}</p>
+
+                  <div className="intro_btn-action pb-5">
+                    <div
+                      onClick={() => openInNewTab(data.code)}
+                      id="button_p"
+                      className="ac_btn btn "
+                    >
+                      Code
+                      <div className="ring one"></div>
+                      <div className="ring two"></div>
+                      <div className="ring three"></div>
+                    </div>
+
+                    <div
+                      onClick={() => openInNewTab(data.live)}
+                      id="button_h"
+                      className="ac_btn btn"
+                    >
+                      Live
+                      <div className="ring one"></div>
+                      <div className="ring two"></div>
+                      <div className="ring three"></div>
+                    </div>
+                  </div>
                 </div>
               );
             })}
